@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Review, Category
+from .models import Product, Review, Category, ProductViewHistory
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,3 +20,9 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'description', 'category', 'price', 'avg_rating']
+
+
+class ProductViewHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductViewHistory
+        fields = '__all__'
