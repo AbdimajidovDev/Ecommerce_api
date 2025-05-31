@@ -15,6 +15,10 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 
+class CustomPagination(PageNumberPagination):
+    page_size = 4
+
+
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
@@ -24,9 +28,10 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+    filter_backends = (django_filters.DjangoFilterBackend, filters.SearchFilter)
+    search_fields = ['name']
+    pagination_class = CustomPagination
 
-class CustomPagination(PageNumberPagination):
-    page_size = 4
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
