@@ -13,6 +13,8 @@ from rest_framework.pagination import PageNumberPagination
 
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.permissions import IsAuthenticated
+
 
 
 class CustomPagination(PageNumberPagination):
@@ -34,6 +36,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 
 class ProductViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated] # default = AllowAny
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
