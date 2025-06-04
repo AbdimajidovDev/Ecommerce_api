@@ -33,7 +33,7 @@ class Order(models.Model):
         choices=STATUS_CHOICES,
         default=PENDING,
     )
-    phone_number = models.CharField(validators=(phone_regex), max_length=13, blank=True, null=True)
+    phone_number = models.CharField(validators=[phone_regex], max_length=13, blank=True, null=True)
 
     def set_status(self, new_status):
         if new_status not in dict(self.STATUS_CHOICES):

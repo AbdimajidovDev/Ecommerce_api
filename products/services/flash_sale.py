@@ -23,17 +23,17 @@ class FlashSaleListCreateView(generics.ListCreateAPIView):
 
     serializer_class = FlashSaleSerializer
 
-    filter_backends = (djando_filters.DjangoFilterBackend, filters.SearchFilter)
-    filterset_class = FlashSaleFilters
-    search_fields = ['discount_percentage']
-
-    @swagger_auto_schema(
-        manual_parameters=[
-            openapi.Parameter('start_time', openapi.IN_QUERY, description='Aksiya boshlanish vaqti', type=openapi.TYPE_STRING, format='date-time'),
-            openapi.Parameter('end_time', openapi.IN_QUERY, description='Aksiya tugash vaqti', type=openapi.TYPE_STRING, format='date-time'),
-            openapi.Parameter('search', openapi.IN_QUERY, description='Chegirma foyizi orqali qidirish', type=openapi.TYPE_STRING)
-        ]
-    )
+    # filter_backends = (djando_filters.DjangoFilterBackend, filters.SearchFilter)
+    # filterset_class = FlashSaleFilters
+    # search_fields = ['discount_percentage']
+    #
+    # @swagger_auto_schema(
+    #     manual_parameters=[
+    #         openapi.Parameter('start_time', openapi.IN_QUERY, description='Aksiya boshlanish vaqti', type=openapi.TYPE_STRING, format='date-time'),
+    #         openapi.Parameter('end_time', openapi.IN_QUERY, description='Aksiya tugash vaqti', type=openapi.TYPE_STRING, format='date-time'),
+    #         openapi.Parameter('search', openapi.IN_QUERY, description='Chegirma foyizi orqali qidirish', type=openapi.TYPE_STRING)
+    #     ]
+    # )
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
